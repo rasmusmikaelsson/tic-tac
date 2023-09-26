@@ -15,9 +15,7 @@
                     ></a
                 >
                 <a href="#create"
-                    ><button class="back_btn"
-                        >Create A Session</button
-                    ></a
+                    ><button class="back_btn">Create A Session</button></a
                 >
             </div>
         </div>
@@ -39,13 +37,18 @@
         <h3>Active Session</h3>
 
         <div class="black-devider">
-            <span></span>
+            <span />
         </div>
 
-        {#each data.sessions as [session, messages]}
-            <a href="/session/{session}"
-                >{session} - {messages.length} messages</a
-            >
+        {#each data.sessions as [sessionName, sessionInfo]}
+            <div class="activeSessions">
+                <a href="/session/{sessionName}">
+                    {sessionName} - {sessionInfo.messages.length} messages -
+                    <span class="created-by"
+                        >Created by: {sessionInfo.createdBy}</span
+                    >
+                </a>
+            </div>
         {/each}
     </section>
     <footer>
@@ -158,7 +161,6 @@
         color: black;
     }
 
-
     .session input:focus,
     .session button:hover {
         background: white;
@@ -173,6 +175,11 @@
     .session h3 {
         margin-bottom: 0.2rem;
     }
+
+    .activeSessions {
+        margin: 10px;
+    }
+
     footer {
         width: 100%;
         height: 150px;
@@ -182,7 +189,7 @@
         align-items: center;
         padding: 50px;
         box-sizing: border-box;
-        
+
         background: #a31962;
     }
 

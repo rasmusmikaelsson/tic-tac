@@ -90,6 +90,10 @@
         transition: all 0.3s ease; 
     }
 
+    .login-form button {
+        font-weight: bold;
+    }
+
     .login-form input::placeholder {
         color: white;
     }

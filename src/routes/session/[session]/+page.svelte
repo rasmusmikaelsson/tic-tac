@@ -27,7 +27,24 @@
     <section class="chat">
         <div class="messages">
             {#each reversedMessages as message}
-                <span id="{message.user == data.user ? "myMessage" : "otherMessage"}">{message.text}</span>
+                <span
+                    class="msg"
+                    class:myMessage={message.user == data.user}
+                    class:otherMessage={message.user != data.user}
+                    id="{message.user == data.user ? "myMessage" : "otherMessage"}"
+                >
+                    {message.text}
+                </span>
+                <span 
+                    class="sentBy"
+                    id="{message.user == data.user ? "myMessage" : "otherMessage"}"
+                >
+                    {#if message.user == data.user}
+                        You
+                    {:else}
+                        {message.user}
+                    {/if}
+                </span>
             {/each}
         </div>
         <div class="send">
@@ -101,6 +118,12 @@
         background: rgb(76, 76, 76);
     }
 
+    .sentBy {
+        background-color: transparent !important;
+        font-weight: bold;
+    }
+
+
     .messages {
         position: relative;
         display: flex;
@@ -117,7 +140,7 @@
         gap: 1rem;
     }
 
-    .messages span {
+    .messages .msg {
         color: white;
         padding: 10px 20px;
         background: black;
