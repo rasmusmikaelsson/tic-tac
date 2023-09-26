@@ -8,14 +8,21 @@
     <section class="banner">
         <div class="banner-text">
             <h1>Welcome To Sessions</h1>
-            <a href="/"
-                ><button class="back_btn"
-                    >Go Back, <span>or Scroll Down :)</span></button
-                ></a
-            >
+            <div class="banner_btn">
+                <a href="/"
+                    ><button class="back_btn"
+                        >Go Back, <span>or Scroll Down :)</span></button
+                    ></a
+                >
+                <a href="#create"
+                    ><button class="back_btn"
+                        >Create A Session</button
+                    ></a
+                >
+            </div>
         </div>
     </section>
-    <section class="session">
+    <section id="create" class="session">
         <div class="sessions">
             <h1>Create A Session</h1>
         </div>
@@ -29,7 +36,7 @@
             <button>Create</button>
         </form>
 
-        <p>Active Session</p>
+        <h3>Active Session</h3>
 
         <div class="black-devider">
             <span></span>
@@ -41,6 +48,15 @@
             >
         {/each}
     </section>
+    <footer>
+        <h3>Made by Rasmus</h3>
+        <div class="footer-links">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#projects">Projects</a></li>
+            </ul>
+        </div>
+    </footer>
 </main>
 
 <style>
@@ -96,6 +112,11 @@
         font-size: 12px;
     }
 
+    .banner_btn {
+        display: flex;
+        gap: 20px;
+    }
+
     .session {
         height: 100vh;
         display: flex;
@@ -113,5 +134,74 @@
 
     form {
         margin-top: 1rem;
+    }
+
+    .session input,
+    .session button {
+        box-shadow: 2px 3px 10px 4px rgba(0, 0, 0, 0.5);
+        background: black;
+        color: white;
+
+        border-radius: 15px;
+        border: 4px solid white;
+        padding: 15px;
+        margin-bottom: 1rem;
+
+        transition: all 0.3s ease;
+    }
+
+    .session input::placeholder {
+        color: white;
+    }
+
+    .session input:focus::placeholder {
+        color: black;
+    }
+
+
+    .session input:focus,
+    .session button:hover {
+        background: white;
+        color: black;
+        border: 4px solid black;
+    }
+
+    .session h1 {
+        font-size: 28px;
+    }
+
+    .session h3 {
+        margin-bottom: 0.2rem;
+    }
+    footer {
+        width: 100%;
+        height: 150px;
+
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 50px;
+        box-sizing: border-box;
+        
+        background: #a31962;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    footer .footer-links a,
+    footer h3 {
+        color: #fdaec1;
+    }
+
+    footer .footer-links ul {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
     }
 </style>

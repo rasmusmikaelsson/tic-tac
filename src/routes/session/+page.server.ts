@@ -1,7 +1,7 @@
 import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
-export let _sessions:Map<string,string[]> = new Map();
+export let _sessions:Map<string, {text: string, user: string}[]> = new Map();
 
 export const load = (async ({ request,params }) => {
 

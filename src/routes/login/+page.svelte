@@ -1,7 +1,6 @@
 <script lang="ts">
-    import type {ActionData} from "./$types.js";
     import { enhance } from "$app/forms";
-    export let form : ActionData;
+    export let form;
     export let data;
 
 </script>
@@ -16,9 +15,13 @@
         <div class="chose-username">
             <form method="post" action="?/login" use:enhance>
                 <input type="text" name="username" placeholder="Enter Username..">
+                <input type="password" name="password" placeholder="Enter Password..">
                 <button>Login</button>
                 {#if form?.username}
                     <span style="color:red;">{form.username}</span>
+                {/if}
+                {#if form?.password}
+                    <span style="color:red;">{form.password}</span>
                 {/if}
             </form>
         </div>
@@ -65,17 +68,34 @@
         margin-bottom: 1rem;
     }
 
+    .login-form input {
+        width: 200px;
+    }
+
+    .login-form button {
+        width: 80px;
+    }
+
     .login-form input,
     .login-form button {
         box-shadow: 2px 3px 10px 4px rgba(0, 0, 0, 0.5);
         background: black;
         color: white;
 
-        border-radius: 5px;
+        border-radius: 15px;
         border: 4px solid white;
-        padding: 5px;
+        padding: 15px;
+        margin-bottom: 1rem;
 
-        transition: all 0.3s ease;
+        transition: all 0.3s ease; 
+    }
+
+    .login-form input::placeholder {
+        color: white;
+    }
+
+    .login-form input:focus::placeholder {
+        color: black;
     }
 
 
@@ -84,6 +104,14 @@
         background: white;
         color: black;
         border: 4px solid black;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
     }
 </style>
 

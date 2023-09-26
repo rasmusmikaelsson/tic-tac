@@ -8,20 +8,33 @@
     <section class="home-banner">
         <div class="home-banner__text">
             <h1>Welcome, {data.username}</h1>
-            <div class="logout_btn">
-                <form method="post" action="/login?/logout">
-                    <button>Logout</button>
-                </form>
+            <div class="home-banner__btn">
+                <div class="logout_btn">
+                    <form method="post" action="/login?/logout">
+                        <button>Logout</button>
+                    </form>
+                </div>
+                <div class="logout_btn">
+                    <a href="#projects"><button>Projects</button></a>
+                </div>
             </div>
         </div>
         
     </section>
-    <section class="projects">
+    <section id="projects" class="projects">
         <h1>Projects</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam deleniti perspiciatis omnis explicabo suscipit hic!</p>
         <a href="/session">Sessions</a>     
     </section>
-    <!-- Home page -->
+    <footer>
+        <h3>Made by Rasmus</h3>
+        <div class="footer-links">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#projects">Projects</a></li>
+            </ul>
+        </div>
+    </footer>
     
 </main>
 
@@ -51,6 +64,11 @@
         font-size: 46px;
 
         padding: 50px;
+    }
+
+    .home-banner__btn {
+        display: flex;
+        gap: 20px;
     }
 
     .logout_btn button {
@@ -111,5 +129,39 @@
         border: 4px solid black;
     }
 
+    .projects h1 {
+        font-size: 28px;
+    }
 
+    footer {
+        width: 100%;
+        height: 150px;
+
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 50px;
+        box-sizing: border-box;
+        
+        background: #376a7d;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    footer .footer-links a,
+    footer h3 {
+        color: #9ec5cc;
+    }
+
+    footer .footer-links ul {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
 </style>
