@@ -14,29 +14,31 @@ export const load = (async ({ request,params, cookies }) => {
     if(!_sessions.has(currentSession)){
         throw error(404, "Session not found")
     }
-    messages = _sessions.has(currentSession) ? _sessions.get(currentSession)! : [];
-    if(messages == undefined) {
-        messages = [];
-    }
+    messages = (_sessions.has(currentSession) ? _sessions.get(currentSession)! : { messages: [], createdBy: "" }).messages;
+
 
     return {session: currentSession, messages, user};
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
     message: async ({ request, cookies }) => {
-        let user = ""
+        let user = "";
         let data = await request.formData();
         let msg = data.get("message")?.toString();
-        if(!msg) {
-            msg = "I agree."
+        if (!msg) {
+            msg = "I agree.";
         }
-        if(cookies.get("username") != undefined) {
-            user = cookies.get("username")!
-        }
-        else {
+        if (cookies.get("username") != undefined) {
+            user = cookies.get("username")!;
+        } else {
             user = "unknown";
         }
-        _sessions.get(currentSession)?.push({text: msg, user: user});
-        
+
+        const session = _sessions.get(currentSession);
+
+        if (session) {
+            // Check if the session is defined before using push
+            session.messages.push({ text: msg, user: user });
+        }
     }
 };
