@@ -106,7 +106,7 @@
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
-        text-align: center;
+        text-align: left;
 
         overflow-y: scroll;
 
@@ -122,6 +122,7 @@
         padding: 10px 20px;
         background: black;
         border-radius: 10px;
+        max-width: 65%;
     }
 
     .send {    
